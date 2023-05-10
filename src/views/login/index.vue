@@ -50,15 +50,26 @@ const onLogin = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       useUserStoreHook()
-        .loginByUsername({ username: ruleForm.username, password: "admin123" })
+        .loginByUsername({
+          username: ruleForm.username,
+          password: ruleForm.password
+        })
         .then(res => {
-          if (res.success) {
+          if (res) {
             // 获取后端路由
             initRouter().then(() => {
               router.push("/");
               message("登录成功", { type: "success" });
             });
           }
+        })
+        .catch(e => {
+          message("登录失败:" + e, { type: "error", duration: 10000 });
+          console.error(JSON.stringify(e?.message));
+          loading.value = false;
+        })
+        .finally(() => {
+          loading.value = false;
         });
     } else {
       loading.value = false;

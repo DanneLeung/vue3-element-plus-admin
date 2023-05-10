@@ -40,4 +40,4 @@ login:
   login: 登录
   usernameReg: 请输入账号
   passwordReg: 请输入密码
-  passwordRuleReg: 密码格式应为8-18位数字、字母、符号的任意两种组合
+  passwordRuleReg: 密码格式应为6-18位数字、字母、符号的任意两种组合

@@ -40,4 +40,4 @@ login:
   login: Login
   usernameReg: Please enter username
   passwordReg: Please enter password
-  passwordRuleReg: The password format should be any combination of 8-18 digits
+  passwordRuleReg: The password format should be any combination of 6-18 digits
