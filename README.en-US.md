@@ -1,12 +1,12 @@
-<h1>vue-pure-admin Lite Edition（i18n version）</h1>
+<h1>vue3-admin Lite Edition（i18n version）</h1>
 
-[![license](https://img.shields.io/github/license/pure-admin/vue-pure-admin.svg)](LICENSE)
+[![license](https://img.shields.io/github/license/pure-admin/vue3-admin.svg)](LICENSE)
 
 **English** | [中文](./README.md)
 
 ## introduce
 
-The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
+The simplified version is based on the shelf extracted from [vue3-admin](https://github.com/pure-admin/vue3-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
 
 ## Supporting Video
 
@@ -20,7 +20,7 @@ The simplified version is based on the shelf extracted from [vue-pure-admin](htt
 
 ## Preview
 
-- [Click me to view the preview station](https://pure-admin-thin.netlify.app/#/login)
+- [Click me to view the preview station](https://vue3-admin.netlify.app/#/login)
 
 ## Usage
 
@@ -44,7 +44,7 @@ bilibili: https://www.bilibili.com/video/BV1534y1S7HV/
 
 ## ⚠️ Attention
 
-- The Lite version does not accept any issues and prs. If you have any questions, please go to the full version https://github.com/pure-admin/vue-pure-admin/issues/new/choose to mention, thank you! ! !
+- The Lite version does not accept any issues and prs. If you have any questions, please go to the full version https://github.com/pure-admin/vue3-admin/issues/new/choose to mention, thank you! ! !
 
 ## License
 

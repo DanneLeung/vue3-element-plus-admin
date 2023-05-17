@@ -32,6 +32,14 @@ menus:
   permission: 权限管理
   permissionPage: 页面权限
   permissionButton: 按钮权限
+  system: 系统管理
+  systemTitle: 系统管理
+  systemuser: 用户管理
+  systemrole: 角色管理
+  systemmenu: 菜单管理
+  systemdepartment: 部门管理
+  systemdict: 数据字典
+  systemlogs: 系统日志
 status:
   hsLoad: 加载中...
 login:

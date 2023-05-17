@@ -32,6 +32,15 @@ menus:
   permission: Permission Manage
   permissionPage: Page Permission
   permissionButton: Button Permission
+  system:
+    title: System
+    user: User
+    role: Role
+    menu: Menu
+    department: Department
+    dict: Dictionary
+    logs: Logs
+
 status:
   hsLoad: Loading...
 login:

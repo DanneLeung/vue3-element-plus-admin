@@ -1,6 +1,11 @@
 import { cdn } from "./cdn";
 import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import DefineOptions from "unplugin-vue-define-options/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+
 import { viteBuildInfo } from "./info";
 import svgLoader from "vite-svg-loader";
 import vueJsx from "@vitejs/plugin-vue-jsx";
@@ -11,7 +16,6 @@ import { visualizer } from "rollup-plugin-visualizer";
 import removeConsole from "vite-plugin-remove-console";
 import themePreprocessorPlugin from "@pureadmin/theme";
 import VueI18nPlugin from "@intlify/unplugin-vue-i18n/vite";
-import DefineOptions from "unplugin-vue-define-options/vite";
 import { genScssMultipleScopeVars } from "../src/layout/theme";
 
 export function getPluginsList(
@@ -23,6 +27,20 @@ export function getPluginsList(
   const lifecycle = process.env.npm_lifecycle_event;
   return [
     vue(),
+    AutoImport({
+      imports: ["vue", "vue-router", "@vueuse/core", "@vueuse/head"],
+      resolvers: [ElementPlusResolver()],
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/ // .vue
+      ],
+      dts: true
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+      dts: true
+    }),
     // https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n
     VueI18nPlugin({
       runtimeOnly: true,

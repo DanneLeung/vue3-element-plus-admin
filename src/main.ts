@@ -11,6 +11,9 @@ import { injectResponsiveStorage } from "@/utils/responsive";
 
 // import Table from "@pureadmin/table";
 // import PureDescriptions from "@pureadmin/descriptions";
+import "xe-utils";
+import VXETable from "vxe-table";
+import "vxe-table/lib/style.css";
 
 // 引入重置样式
 import "./style/reset.scss";
@@ -50,7 +53,7 @@ getServerConfig(app).then(async config => {
   await router.isReady();
   injectResponsiveStorage(app, config);
   setupStore(app);
-  app.use(MotionPlugin).use(useI18n).use(ElementPlus);
+  app.use(MotionPlugin).use(useI18n).use(ElementPlus).use(VXETable);
   // .use(useEcharts);
   // .use(Table);
   // .use(PureDescriptions);
