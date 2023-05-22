@@ -23,14 +23,14 @@
             <el-tree
               ref="menuListTree"
               :data="menuList"
-              :props="{ label: 'name', children: 'children' }"
+              :props="{ label: 'title', children: 'children' }"
               node-key="id"
               accordion
               show-checkbox
             />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
+        <!-- <el-col :span="12">
           <el-form-item label="数据权限">
             <el-tree
               ref="orgListTree"
@@ -41,7 +41,7 @@
               show-checkbox
             />
           </el-form-item>
-        </el-col>
+        </el-col> -->
       </el-row>
     </el-form>
     <template #footer>
@@ -55,16 +55,16 @@
 import { reactive, ref } from "vue";
 import { ElMessage } from "element-plus/es";
 import { useRoleApi } from "@/api/system/role";
-// import { useMenuListApi } from "@/api/system/menu";
+import { useMenuListApi } from "@/api/system/menu";
 // import { useOrgListApi } from "@/api/system/dept";
 
 const emit = defineEmits(["refreshDataList"]);
 
 const visible = ref(false);
 const menuList = ref([]);
-const orgList = ref([]);
+// const orgList = ref([]);
+// const orgListTree = ref();
 const menuListTree = ref();
-const orgListTree = ref();
 const dataFormRef = ref();
 
 const dataForm = reactive({
@@ -86,9 +86,9 @@ const init = (id?: number) => {
   if (menuListTree.value) {
     menuListTree.value.setCheckedKeys([]);
   }
-  if (orgListTree.value) {
-    orgListTree.value.setCheckedKeys([]);
-  }
+  // if (orgListTree.value) {
+  //   orgListTree.value.setCheckedKeys([]);
+  // }
 
   // id 存在则为修改
   if (id) {
@@ -96,18 +96,18 @@ const init = (id?: number) => {
   }
 
   // 菜单列表
-  // getMenuList();
+  getMenuList();
 
   // 机构列表
   // getOrgList();
 };
 
 // 获取菜单列表
-// const getMenuList = () => {
-//   return useMenuListApi().then(res => {
-//     menuList.value = res.data;
-//   });
-// };
+const getMenuList = () => {
+  return useMenuListApi().then(res => {
+    menuList.value = res.data;
+  });
+};
 
 // 获取机构列表
 // const getOrgList = () => {
@@ -124,7 +124,7 @@ const getRole = (id: number) => {
     dataForm.menuIdList.forEach(item =>
       menuListTree.value.setChecked(item, true)
     );
-    orgListTree.value.setCheckedKeys(dataForm.orgIdList);
+    // orgListTree.value.setCheckedKeys(dataForm.orgIdList);
   });
 };
 
@@ -142,7 +142,7 @@ const submitHandle = () => {
       ...menuListTree.value.getHalfCheckedKeys(),
       ...menuListTree.value.getCheckedKeys()
     ];
-    dataForm.orgIdList = orgListTree.value.getCheckedKeys();
+    // dataForm.orgIdList = orgListTree.value.getCheckedKeys();
 
     ElMessage.success({
       message: "操作成功",
