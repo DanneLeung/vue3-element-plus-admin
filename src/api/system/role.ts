@@ -1,7 +1,7 @@
 import { http } from "@/utils/http";
 
 export const useRoleApi = (id: number) => {
-  return http.get("/role/" + id);
+  return http.get("/role/get/" + id);
 };
 
 export const useRoleListApi = () => {

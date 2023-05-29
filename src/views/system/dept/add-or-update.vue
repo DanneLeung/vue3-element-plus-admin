@@ -30,7 +30,7 @@
             >
               <template #suffix>
                 <svg-icon
-                  v-if="dataForm.pid !== '0'"
+                  v-if="dataForm.parentId !== '0'"
                   icon="icon-close-circle"
                   @click.stop="treeSetDefaultHandle()"
                 />
@@ -83,7 +83,7 @@ const orgListPopover = ref();
 const dataForm = reactive({
   id: "",
   name: "",
-  pid: "",
+  parentId: "",
   parentName: "",
   sort: 0
 });
@@ -118,24 +118,24 @@ const getOrgList = () => {
 // 获取信息
 const getOrg = (id: number) => {
   useOrgApi(id).then((res: any) => {
-    Object.assign(dataForm, res.data);
+    Object.assign(dataForm, res);
 
-    if (dataForm.pid == "0") {
+    if (dataForm.parentId == "0") {
       return treeSetDefaultHandle();
     }
 
-    orgListTree.value.setCurrentKey(dataForm.pid);
+    orgListTree.value.setCurrentKey(dataForm.parentId);
   });
 };
 
 // 上级机构树, 设置默认值
 const treeSetDefaultHandle = () => {
-  dataForm.pid = "0";
+  dataForm.parentId = "0";
   dataForm.parentName = "一级机构";
 };
 
 const treeCurrentChange = (data: any) => {
-  dataForm.pid = data.id;
+  dataForm.parentId = data.id;
   dataForm.parentName = data.name;
   orgListPopover.value.hide();
 };

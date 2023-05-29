@@ -14,11 +14,11 @@
       <el-form-item prop="name" label="名称">
         <el-input v-model="dataForm.name" placeholder="名称" />
       </el-form-item>
-      <el-form-item prop="remark" label="备注">
-        <el-input v-model="dataForm.remark" placeholder="备注" />
+      <el-form-item prop="description" label="说明">
+        <el-input v-model="dataForm.description" placeholder="说明" />
       </el-form-item>
       <el-row>
-        <el-col :span="12">
+        <el-col :span="24">
           <el-form-item label="菜单权限">
             <el-tree
               ref="menuListTree"
@@ -70,9 +70,9 @@ const dataFormRef = ref();
 const dataForm = reactive({
   id: "",
   name: "",
-  menuIdList: [] as any[],
+  menuIds: [] as any[],
   orgIdList: [],
-  remark: ""
+  description: ""
 });
 
 const init = (id?: number) => {
@@ -104,8 +104,8 @@ const init = (id?: number) => {
 
 // 获取菜单列表
 const getMenuList = () => {
-  return useMenuListApi().then(res => {
-    menuList.value = res.data;
+  return useMenuListApi().then((res: any[]) => {
+    menuList.value = res;
   });
 };
 
@@ -119,11 +119,10 @@ const getMenuList = () => {
 // 获取信息
 const getRole = (id: number) => {
   useRoleApi(id).then((res: any) => {
-    Object.assign(dataForm, res.data);
+    Object.assign(dataForm, res);
 
-    dataForm.menuIdList.forEach(item =>
-      menuListTree.value.setChecked(item, true)
-    );
+    // dataForm.menuIds.forEach(item => menuListTree.value.setChecked(item, true));
+    menuListTree.value.setCheckedKeys(dataForm.menuIds);
     // orgListTree.value.setCheckedKeys(dataForm.orgIdList);
   });
 };
@@ -138,7 +137,7 @@ const submitHandle = () => {
     if (!valid) {
       return false;
     }
-    dataForm.menuIdList = [
+    dataForm.menuIds = [
       ...menuListTree.value.getHalfCheckedKeys(),
       ...menuListTree.value.getCheckedKeys()
     ];

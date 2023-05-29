@@ -5,5 +5,5 @@ export const useOrgListApi = () => {
 };
 
 export const useOrgApi = (id: Number) => {
-  return http.get("/dept/" + id);
+  return http.get("/dept/get/" + id);
 };
